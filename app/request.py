@@ -1,10 +1,10 @@
-import requests as rq
+import request as rq
 
-# base_url='http://quotes.stormconsultancy.co.uk/random.json'
+base_url='http://quotes.stormconsultancy.co.uk/random.json'
 
-# def get_quotes():
+def get_quotes():
 
-#     # with rq.get(base_url) as data:
-#     #    quotes = data.json()
+    with rq.get(base_url) as data:
+       quotes = data.json()
 
-#     return quotes
+    return quotes
