@@ -1,4 +1,4 @@
-# pitch-world
+# Elly-Blog
 ## Author
 
 [Elibora-Kojwang](https://github.com/kojwangbora)
