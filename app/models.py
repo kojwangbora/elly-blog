@@ -1,17 +1,14 @@
-from sqlalchemy.orm import backref
-from . import db, login_manager
+from app import db
 from flask_login import UserMixin
 from datetime import datetime
 
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    id = db.Column(db.Integer(), primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(20), nullable = False)
     email = db.Column(db.String(), nullable = False)
     password =db.Column(db.String(80))
@@ -22,8 +19,8 @@ class User(db.Model, UserMixin):
 
 
 class Posts (db.Model):
-    __tablename__ = 'pitches'
-    id = db.Column(db.Integer(), primary_key = True)
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(20), nullable = False)
     content = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
@@ -51,7 +48,7 @@ class Posts (db.Model):
 
 class Comments(db.Model):
     __tablename__ = 'comments'
-    id = db.Column(db.Integer(), primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(20), nullable = False)
     comment = db.Column(db.String(255), nullable = False)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
